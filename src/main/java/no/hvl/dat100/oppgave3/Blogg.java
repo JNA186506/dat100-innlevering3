@@ -5,52 +5,88 @@ import no.hvl.dat100.oppgave1.*;
 
 public class Blogg {
 
-	// TODO: objektvariable 
+	private int lengde;
+	private int antall;
+	private Innlegg[] samling;
 
 	public Blogg() {
-		throw new UnsupportedOperationException(TODO.constructor("Blogg"));
+		this.antall = 0;
+		this.lengde = 20;
+		this.samling =  new Innlegg[lengde];
 	}
 
 	public Blogg(int lengde) {
-		throw new UnsupportedOperationException(TODO.constructor("Blogg"));
+		this.lengde = lengde;
+		this.antall = 0;
+		this.samling = new Innlegg[lengde];
 	}
 
 	public int getAntall() {
-		throw new UnsupportedOperationException(TODO.method());
+		return antall;
 	}
 	
 	public Innlegg[] getSamling() {
-		throw new UnsupportedOperationException(TODO.method());
-
+		return samling;
 	}
 	
 	public int finnInnlegg(Innlegg innlegg) {
 
-		throw new UnsupportedOperationException(TODO.method());
+		for (int i = 0; i < samling.length; i++) {
+			if (samling[i] == null) {
+				return -1;
+			}
+
+			if (samling[i].erLik(innlegg)) {
+				return i;
+			}
+		}
+		return -1;
 	}
 
 	public boolean finnes(Innlegg innlegg) {
-		throw new UnsupportedOperationException(TODO.method());
+		return finnInnlegg(innlegg) != -1;
 	}
 
 	public boolean ledigPlass() {
-		throw new UnsupportedOperationException(TODO.method());
-
+		return antall < lengde;
 	}
 	
 	public boolean leggTil(Innlegg innlegg) {
 
-		throw new UnsupportedOperationException(TODO.method());
+		if (!ledigPlass()) {
+			return false;
+		}
+
+		for (int i = 0; i < samling.length; i++) {
+				if (samling[i] == null) {
+					samling[i] = innlegg;
+				antall++;
+				return true;
+			}
+		}
+		return false;
 	}
 	
 	public String toString() {
-		throw new UnsupportedOperationException(TODO.method());
+		String s = "" + samling.length + "\n";
+		for (int i = 0; i < samling.length; i++) {
+			s += samling[i].toString();
+		}
+		return s;
 	}
 
 	// valgfrie oppgaver nedenfor
 	
 	public void utvid() {
-		throw new UnsupportedOperationException(TODO.method());
+
+		Innlegg[] newSamling = new Innlegg[lengde];
+		if (antall == lengde) {
+			newSamling = new Innlegg[lengde * 2];
+		}
+
+        if (antall >= 0) System.arraycopy(samling, 0, newSamling, 0, antall);
+
+		samling = newSamling;
 	}
 	
 	public boolean leggTilUtvid(Innlegg innlegg) {
