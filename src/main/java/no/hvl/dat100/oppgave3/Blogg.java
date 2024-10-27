@@ -70,7 +70,9 @@ public class Blogg {
 	public String toString() {
 		String s = "" + samling.length + "\n";
 		for (int i = 0; i < samling.length; i++) {
-			s += samling[i].toString();
+			if (samling[i] != null) {
+				s += samling[i].toString();
+			}
 		}
 		return s;
 	}
@@ -79,25 +81,38 @@ public class Blogg {
 	
 	public void utvid() {
 
-		Innlegg[] newSamling = new Innlegg[lengde];
-		if (antall == lengde) {
-			newSamling = new Innlegg[lengde * 2];
+		Innlegg[] newSamling = new Innlegg[lengde * 2];
+
+		for (int i = 0; i < samling.length; i++) {
+			newSamling[i] = samling[i];
 		}
-
-        if (antall >= 0) System.arraycopy(samling, 0, newSamling, 0, antall);
-
 		samling = newSamling;
+		lengde = samling.length;
 	}
 	
 	public boolean leggTilUtvid(Innlegg innlegg) {
 
-		throw new UnsupportedOperationException(TODO.method());
-		
+		if (!ledigPlass()) {
+			utvid();
+		}
+		for (int i = 0; i < samling.length; i++) {
+			if (samling[i].getId() != innlegg.getId() && samling[i] == null) {
+				samling[i] = innlegg;
+				return true;
+			}
+		}
+		return false;
 	}
 	
 	public boolean slett(Innlegg innlegg) {
-		
-		throw new UnsupportedOperationException(TODO.method());
+		for (int i = 0; i < samling.length; i++) {
+			if (innlegg.getId() == samling[i].getId()) { //Vurder forskyvning av elementene for å unngå hull i arrayen
+				samling[i] = null;
+				antall--;
+				return true;
+			}
+		}
+		return false;
 	}
 	
 	public int[] search(String keyword) {
