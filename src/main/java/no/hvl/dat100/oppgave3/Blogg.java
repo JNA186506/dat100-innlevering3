@@ -8,7 +8,7 @@ public class Blogg {
 	private int lengde;
 	private int antall;
 	private Innlegg[] samling;
-	private int nesteLedige = 0;
+	
 	
 	
 	
@@ -39,44 +39,54 @@ public class Blogg {
 	}
 	
 	public int finnInnlegg(Innlegg innlegg) {
+		int pos = 0;
 		for (int i = 0; i < samling.length; i++) {
 			if (samling[i] == null) {
-				return -1;
+				pos = -1;
 			}
-			if (samling[i].erLik(innlegg))
+			if (samling[i].erLik(innlegg)) {
+				pos = i;
+			}
 		}
+		return pos;
 		
-		throw new UnsupportedOperationException(TODO.method());
 	}
 
 	public boolean finnes(Innlegg innlegg) {
-
-		if (fant) {
-			fant = true;
-			return fant;
-		}else {
-			return fant;
-			
-		}
-			
-			
+		
+		return finnInnlegg(innlegg) != -1;	
 		
 		
-		throw new UnsupportedOperationException(TODO.method());
 	}
 
 	public boolean ledigPlass() {
+		return antall<lengde;
 		
-		throw new UnsupportedOperationException(TODO.method());
 
 	}
 	
 	public boolean leggTil(Innlegg innlegg) {
-
-		throw new UnsupportedOperationException(TODO.method());
-	}
+		if (!ledigPlass()) {
+			return false;
+		}
+			for (int i = 0; i < samling.length; i++) {
+				if (samling[i] == null) {
+					samling[i] = innlegg;
+					antall++;
+					return true;
+				}
+			}
+		
+		return false;
+					
+			
+		}
+	
 	
 	public String toString() {
+		
+		String s = "" + samling.length + "";
+		
 		
 		throw new UnsupportedOperationException(TODO.method());
 	}
