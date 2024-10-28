@@ -68,7 +68,7 @@ public class Blogg {
 	}
 	
 	public String toString() {
-		String s = "" + samling.length + "\n";
+		String s = "" + antall + "\n";
 		for (int i = 0; i < samling.length; i++) {
 			if (samling[i] != null) {
 				s += samling[i].toString();
