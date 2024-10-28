@@ -4,7 +4,7 @@ import no.hvl.dat100.common.TODO;
 
 public abstract class Innlegg {
 	
-	// TODO - deklarering av objektvariable
+	// Deklarering av objektvariable
 	
 	public Innlegg() {
 		
