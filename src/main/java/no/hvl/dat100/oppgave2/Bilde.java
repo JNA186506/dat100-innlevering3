@@ -3,11 +3,11 @@ package no.hvl.dat100.oppgave2;
 import no.hvl.dat100.common.TODO;
 
 public class Bilde extends Tekst {
-	
+
 	private String url;
 
 	// Objekt variable
-	
+
 	public Bilde(int id, String bruker, String dato, String tekst, String url) {
 		super(id, bruker, dato, tekst);
 		this.url = url;
@@ -17,7 +17,7 @@ public class Bilde extends Tekst {
 		super(id, bruker, dato, likes, tekst);
 		this.url = url;
 	}
-	
+
 	public String getUrl() {
 		return url;
 	}
@@ -26,16 +26,20 @@ public class Bilde extends Tekst {
 		this.url = url;
 	}
 
+	// Gir en tekst-representasjon av alle objektvariablene inkludert de som er
+	// arvet fra superklassen.
+	
 	@Override
 	// "BILDE\n1\nOle Olsen\n23-10\n0\net bilde\nhttp://www.picture.com/oo.jpg\n"
 	public String toString() {
-		return "BILDE\n" + getId() + "\n" + getBruker() + "\n" + getDato() + "\n" + getLikes() + "\n" + getTekst() + "\n" + url + "\n";
+		return "BILDE\n" + getId() + "\n" + getBruker() + "\n" + getDato() + "\n" + getLikes() + "\n" + getTekst()
+				+ "\n" + url + "\n";
 	}
 
 	// Metoden nedenfor er kun for valgfri oppgave 6
 	public String toHTML() {
-		
+
 		throw new UnsupportedOperationException(TODO.method());
-				
+
 	}
 }

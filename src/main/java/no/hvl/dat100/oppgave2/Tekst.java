@@ -31,6 +31,9 @@ public class Tekst extends Innlegg {
 		this.tekst = tekst;
 	}
 
+	// Gir en tekst-representasjon av alle objektvariablene inkludert de som er
+	// arvet fra superklassen.
+	
 	@Override
 	// "TEKST\n1\nOle Olsen\n23-10\n0\nen tekst\n"
 	public String toString() {
