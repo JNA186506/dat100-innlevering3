@@ -33,8 +33,13 @@ public class Bilde extends Tekst {
 
 	// Metoden nedenfor er kun for valgfri oppgave 6
 	public String toHTML() {
-		
-		throw new UnsupportedOperationException(TODO.method());
-				
+		String h = "\n\t" + super.toHTML();
+		StringBuilder html = new StringBuilder();
+		html.append(h)
+				.append("\n\t\t<iframe src=\"")
+				.append(url)
+				.append("\"></iframe>\n");
+
+		return html.toString();
 	}
 }

@@ -19,8 +19,7 @@ public class SkrivBlogg {
 			return true;
 
 		} catch (IOException e) { //Lage en mer robust exception handler?
-			e.printStackTrace();
-			return false;
+			throw new RuntimeException("Something went wrong", e);
 		}
 	}
 }

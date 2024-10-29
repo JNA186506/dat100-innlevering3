@@ -36,8 +36,11 @@ public class Tekst extends Innlegg {
 	
 	// Metoden nedenfor er kun for valgfri oppgave 6
 	public String toHTML() {
-			
-		throw new UnsupportedOperationException(TODO.method());
-				
+		String h = "\n\t" + super.toHTML();
+		StringBuilder html = new StringBuilder();
+		html.append(h + "\n\t\t<p>")
+				.append(getTekst())
+				.append("</p>\n\t<hr>\n");
+		return html.toString();
 	}
 }
