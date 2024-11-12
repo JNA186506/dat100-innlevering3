@@ -8,25 +8,20 @@ public class Blogg {
 	private int lengde;
 	private int antall;
 	private Innlegg[] samling;
-	
-	
-	
-	
-	
-	// TODO: objektvariable 
+
 
 	public Blogg() {
-		this.lengde = 0;
-		this.antall = 20;
-		this.samling = new Innlegg[antall];
-	
+		this.antall = 0;
+		this.lengde = 20;
+		this.samling =  new Innlegg[lengde];
 	}
 
 	public Blogg(int lengde) {
 		this.lengde = lengde;
-		this.antall = 20;
+
+		this.antall = 0;
 		this.samling = new Innlegg[lengde];
-		
+	}	
 }
 
 	public int getAntall() {
@@ -35,77 +30,94 @@ public class Blogg {
 	
 	public Innlegg[] getSamling() {
 		return samling;
-		
 	}
 	
 	public int finnInnlegg(Innlegg innlegg) {
-		int pos = 0;
+    
 		for (int i = 0; i < samling.length; i++) {
 			if (samling[i] == null) {
-				pos = -1;
+				return -1;
 			}
+
 			if (samling[i].erLik(innlegg)) {
-				pos = i;
+				return i;
 			}
 		}
-		return pos;
-		
+		return -1;
 	}
 
 	public boolean finnes(Innlegg innlegg) {
-		
-		return finnInnlegg(innlegg) != -1;	
-		
-		
+		return finnInnlegg(innlegg) != -1;
 	}
 
 	public boolean ledigPlass() {
-		return antall<lengde;
-		
-
+		return antall < lengde;
 	}
 	
 	public boolean leggTil(Innlegg innlegg) {
+
 		if (!ledigPlass()) {
 			return false;
-		}
-			for (int i = 0; i < samling.length; i++) {
+    }
+    
+		for (int i = 0; i < samling.length; i++) {
 				if (samling[i] == null) {
 					samling[i] = innlegg;
-					antall++;
-					return true;
-				}
+				  antall++;
+				  return true;
 			}
-		
-		return false;
-					
-			
 		}
-	
+		return false;
+	}
 	
 	public String toString() {
-		
-		String s = "" + samling.length + "";
-		
-		
-		throw new UnsupportedOperationException(TODO.method());
+		String s = "" + antall + "\n";
+		for (int i = 0; i < samling.length; i++) {
+			if (samling[i] != null) {
+				s += samling[i].toString();
+			}
+		}
+		return s;
 	}
-
-	// valgfrie oppgaver nedenfor
 	
 	public void utvid() {
-		throw new UnsupportedOperationException(TODO.method());
+
+		Innlegg[] newSamling = new Innlegg[lengde * 2];
+
+		for (int i = 0; i < samling.length; i++) {
+			newSamling[i] = samling[i];
+		}
+		samling = newSamling;
+		lengde = samling.length;
 	}
 	
 	public boolean leggTilUtvid(Innlegg innlegg) {
+    
+    if (finnes(innlegg)) {
+      return false;
+    }
+    
 
-		throw new UnsupportedOperationException(TODO.method());
-		
+		if (!ledigPlass()) {
+			utvid();
+		}
+    
+		samling[antall] = innlegg;
+    antall++;
+    return true;
 	}
 	
 	public boolean slett(Innlegg innlegg) {
-		
-		throw new UnsupportedOperationException(TODO.method());
+    
+    Innlegg siste = null;
+    
+		if (antall > 0) {
+      siste = samling[antall - 1];
+      samling[antall - 1] = null;
+      antall--;
+      return true;
+    }
+    return false;
 	}
 	
 	public int[] search(String keyword) {

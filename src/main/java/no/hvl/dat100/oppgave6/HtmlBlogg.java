@@ -2,6 +2,8 @@ package no.hvl.dat100.oppgave6;
 
 import no.hvl.dat100.common.TODO;
 import no.hvl.dat100.oppgave1.Innlegg;
+import no.hvl.dat100.oppgave2.Bilde;
+import no.hvl.dat100.oppgave2.Tekst;
 import no.hvl.dat100.oppgave3.Blogg;
 
 public class HtmlBlogg extends Blogg {
@@ -18,7 +20,16 @@ public class HtmlBlogg extends Blogg {
 	
 	@Override
 	public String toString() {
-		throw new UnsupportedOperationException(TODO.method());
-		
+		StringBuilder sb = new StringBuilder(HTMLPREFIX);
+
+		for (Innlegg innlegg : getSamling()) { //Legger til en ekstra <hr> etter tekst ved Bilde innlegg, potensiell forbedring
+			if (innlegg != null) {
+				if (innlegg instanceof Tekst) {
+					sb.append(innlegg.toHTML());
+				}
+			}
+		}
+		sb.append(HTMLPOSTFIX);
+		return sb.toString();
 	}
 }
