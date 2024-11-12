@@ -9,12 +9,6 @@ public abstract class Innlegg {
 	private String dato;
 	private int likes;
 	
-	private int id;
-	private String bruker;
-	private String dato;
-	private int likes;
-	
-	
 	public Innlegg() {
 
 	}
