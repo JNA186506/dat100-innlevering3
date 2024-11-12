@@ -54,7 +54,6 @@ public abstract class Innlegg {
 	}
 	
 	public void doLike () {
-		likes = getLikes();
 		likes++;
 	}
 	

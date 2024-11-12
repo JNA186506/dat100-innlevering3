@@ -5,11 +5,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.Scanner;
 
-import no.hvl.dat100.common.TODO;
-import no.hvl.dat100.oppgave1.*;
 import no.hvl.dat100.oppgave2.*;
 import no.hvl.dat100.oppgave3.*;
 
