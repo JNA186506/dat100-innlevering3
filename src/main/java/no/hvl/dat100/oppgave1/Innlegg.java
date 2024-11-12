@@ -9,6 +9,12 @@ public abstract class Innlegg {
 	private String dato;
 	private int likes;
 	
+	private int id;
+	private String bruker;
+	private String dato;
+	private int likes;
+	
+	
 	public Innlegg() {
 
 	}
@@ -24,15 +30,18 @@ public abstract class Innlegg {
 		this.bruker = bruker;
 		this.dato = dato;
 		this.likes = likes;
+
 	}
 	
 	public String getBruker() {
 		return bruker;
 
+
 	}
 
 	public void setBruker(String bruker) {
 		this.bruker = bruker;
+
 	}
 
 	public String getDato() {
@@ -42,20 +51,22 @@ public abstract class Innlegg {
 
 	public void setDato(String dato) {
 		this.dato = dato;
+
 	}
 
 	public int getId() {
 		return id;
+
 	}
 
 	public int getLikes() {
 		return likes;
-
 	}
 	
 	public void doLike () {
-		likes++;
+		likes++;		
 	}
+
 	
 	public boolean erLik(Innlegg innlegg) {
 		return (innlegg.getId() == this.id);

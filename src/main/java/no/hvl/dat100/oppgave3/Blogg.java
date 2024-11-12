@@ -9,6 +9,7 @@ public class Blogg {
 	private int antall;
 	private Innlegg[] samling;
 
+
 	public Blogg() {
 		this.antall = 0;
 		this.lengde = 20;
@@ -17,9 +18,11 @@ public class Blogg {
 
 	public Blogg(int lengde) {
 		this.lengde = lengde;
+
 		this.antall = 0;
 		this.samling = new Innlegg[lengde];
-	}
+	}	
+}
 
 	public int getAntall() {
 		return antall;
@@ -30,7 +33,7 @@ public class Blogg {
 	}
 	
 	public int finnInnlegg(Innlegg innlegg) {
-
+    
 		for (int i = 0; i < samling.length; i++) {
 			if (samling[i] == null) {
 				return -1;
@@ -55,13 +58,13 @@ public class Blogg {
 
 		if (!ledigPlass()) {
 			return false;
-		}
-
+    }
+    
 		for (int i = 0; i < samling.length; i++) {
 				if (samling[i] == null) {
 					samling[i] = innlegg;
-				antall++;
-				return true;
+				  antall++;
+				  return true;
 			}
 		}
 		return false;
@@ -76,8 +79,6 @@ public class Blogg {
 		}
 		return s;
 	}
-
-	// valgfrie oppgaver nedenfor
 	
 	public void utvid() {
 
@@ -91,28 +92,32 @@ public class Blogg {
 	}
 	
 	public boolean leggTilUtvid(Innlegg innlegg) {
+    
+    if (finnes(innlegg)) {
+      return false;
+    }
+    
 
 		if (!ledigPlass()) {
 			utvid();
 		}
-		for (int i = 0; i < samling.length; i++) {
-			if (samling[i].getId() != innlegg.getId() && samling[i] == null) {
-				samling[i] = innlegg;
-				return true;
-			}
-		}
-		return false;
+    
+		samling[antall] = innlegg;
+    antall++;
+    return true;
 	}
 	
 	public boolean slett(Innlegg innlegg) {
-		for (int i = 0; i < samling.length; i++) {
-			if (innlegg.getId() == samling[i].getId()) { //Vurder forskyvning av elementene for å unngå hull i arrayen
-				samling[i] = null;
-				antall--;
-				return true;
-			}
-		}
-		return false;
+    
+    Innlegg siste = null;
+    
+		if (antall > 0) {
+      siste = samling[antall - 1];
+      samling[antall - 1] = null;
+      antall--;
+      return true;
+    }
+    return false;
 	}
 	
 	public int[] search(String keyword) {

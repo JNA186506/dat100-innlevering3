@@ -3,7 +3,7 @@ package no.hvl.dat100.oppgave2;
 import no.hvl.dat100.oppgave1.*;
 import no.hvl.dat100.common.TODO;
 
-public class Bilde extends Tekst {
+public class Bilde extends Tekst { //Extender Tekst, men burde kanskje extende innlegg?
 
 	private String url;
 
@@ -15,7 +15,7 @@ public class Bilde extends Tekst {
 	public Bilde(int id, String bruker, String dato, int likes, String tekst, String url) {
 		super(id, bruker, dato, likes, tekst);
 		this.url = url;
-	}
+
 	
 	public String getUrl() {
 		return url;
@@ -26,9 +26,10 @@ public class Bilde extends Tekst {
 		this.url = url;
 	}
 
+
 	@Override
 	public String toString() {
-		return "BILDE\n" + getId() + "\n" + getBruker() + "\n" + getDato() + "\n" + getLikes() + "\n" + getTekst() + "\n" + url + "\n";
+	return "BILDE\n" + getId() + "\n" + getBruker() + "\n" + getDato() + "\n" + getLikes() + "\n" + getTekst() + "\n" + url + "\n";
 	}
 
 	// Metoden nedenfor er kun for valgfri oppgave 6
